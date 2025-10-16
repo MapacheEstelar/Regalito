@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💖 Carta Especial 💖</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      text-align: center;
+      color: #333;
+      transition: background-color 0.4s ease;
+    }
+    h2, h3, p {
+      margin: 10px 0;
+    }
+    .screen {
+      display: none;
+      width: 90%;
+      max-width: 420px;
+    }
+    .active {
+      display: block;
+    }
+    input {
+      padding: 10px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+      outline: none;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      background-color: #ff4f81;
+      color: white;
+    }
+    button:hover {
+      background-color: #ff2a66;
+    }
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      animation: fadeIn 0.8s ease;
+      text-align: left; 
+    }
+    .main-img {
+      width: 280px;
+      height: auto;
+      margin-bottom: 15px;
+      object-fit: contain;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
+    }
+    #errorMessage {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 8px;
+    }
+    /* ✨ Texto tipo carta */
+    .card p {
+      text-align: justify;
+      line-height: 1.6;
+      font-size: 1em;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Pantalla de contraseña -->
+  <div class="screen active" id="passwordScreen">
+    <img src="https://cdn-icons-png.flaticon.com/512/5014/5014063.png" alt="Caja de regalo" class="main-img">
+    <h2>🔒 Ingresa la contraseña</h2>
+    <input type="password" id="passwordInput" placeholder="Escribe la clave...">
+    <br>
+    <button onclick="checkPassword()">Entrar</button>
+    <p id="errorMessage"></p>
+  </div>
+  <div class="screen" id="menuScreen">
+    <h2>💌 Dedicado para ti, amorcito 💌</h2>
+    <p>Elige lo que quieres abrir:</p>
+    <div class="btn-container">
+      <button onclick="window.open('https://www.tiktok.com/@terry20f/video/7467228324197043462')">🎶 Ver video</button>
+      <button onclick="showLetter()">💖 Leer carta</button>
+    </div>
+  </div>
+  <div class="screen" id="letterScreen">
+    <div class="card">
+      <h3>My love,</h3>
+      <p>No sé muy bien cómo empezar esta carta, ya han pasado dos mes, es increible, no solo el hecho de que 
+        se han pasado volando sino el hecho de que sin importar la distancia nuestros corazones laten el uno 
+        por el otro, se que soy algo torpe y tengo algunas cosas que aprender, pero tu me haces sentir que 
+        todo lo que haga vale la persona y eso me hace muy feliz. </p>
+      <p> Es algo complicado el expresarme solo diciendolo o solo escribiendolo pero el tema es que me tienes 
+        loco por ti, me encanta cada momento que pasamos juntos aunque no hagamos nada, el solo hecho de 
+        saber que estas del otro lado de la llamada acompañandome me llena de paz y alegria.</p>
+      <p>Se que tienes algunos miedos o algun que otro pensamiento que todavia te afecta, pero para eso estoy, 
+        para mostrarte que tenemos algo bonito algo que va a durar y no tienes porque dudar, y no me cansare de
+        mostrartelo porque me gustas y te quiero, es lo minimo que puedo hacer</p>
+      <p>Y que mas puedo decir de ti? Que me gusta como hablas, como sonries, que el verte en las ocaciones que 
+        prendes camara o solo me mandas una foto ya lo vuelve un día mas especial, porque no solo digo especial?
+        Porque cada día que pasamos juntos ya especial para mi.</p>
+        <p>Pero el punto de todo esto es que feliz aniversario mi amor,
+          Te quiero 💖
+          </p>
+    <p>Con mucho cariño,</p>
+    <p>Mapachito</p>
+      </p>
+      <button onclick="goBack()">🔙 Volver</button>
+    </div>
+  </div>
+  <script>
+    const correctPassword = "1608";
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value.trim();
+      const error = document.getElementById("errorMessage");
+      if (input === correctPassword) {
+        document.getElementById("passwordScreen").classList.remove("active");
+        document.getElementById("menuScreen").classList.add("active");
+        error.textContent = "";
+      } else {
+        error.textContent = "Contraseña incorrecta 💔";
+      }
+    }
+    function showLetter() {
+      document.getElementById("menuScreen").classList.remove("active");
+      document.getElementById("letterScreen").classList.add("active");
+    }
+    function goBack() {
+      document.getElementById("letterScreen").classList.remove("active");
+      document.getElementById("menuScreen").classList.add("active");
+    }
+  </script>
+</body>
+</html>
